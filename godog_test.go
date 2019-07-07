@@ -20,8 +20,9 @@ func openBukalapak() error {
 	}
 
 	fmt.Println(wd.CurrentURL())
-	aTime, _ := wd.Title()
-	if defaultTime := ("Welcome mpermperpisang"); aTime != defaultTime {
+	
+	currentTitle, _ := wd.Title()
+	if expectTitle := ("Welcome mpermperpisang"); currentTitle != expectTitle {
 		panic("Nama tidak sesuai")
 	}
 
