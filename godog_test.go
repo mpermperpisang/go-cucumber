@@ -6,21 +6,11 @@ import (
 
 	"github.com/DATA-DOG/godog"
 	. "github.com/logrusorgru/aurora"
-	"github.com/tebeka/selenium"
 )
-
-var wd selenium.WebDriver
-
-func seleniumWebDriverConnect() error {
-	caps := selenium.Capabilities{"browserName": "chrome"}
-	wd, _ = selenium.NewRemote(caps, "")
-
-	return nil
-}
 
 func accessURL(url string) error {
 	if err := wd.Get(fmt.Sprintf("localhost:8080/?name=%s", url)); err != nil {
-		panic(err)
+		log.Fatalln(Bold(Red(err)))
 	}
 
 	fmt.Println(wd.CurrentURL())
@@ -30,6 +20,7 @@ func accessURL(url string) error {
 
 func validateWindowTitle(name string) error {
 	currentTitle, _ := wd.Title()
+
 	if expectTitle := (fmt.Sprintf("Welcome %s", name)); currentTitle != expectTitle {
 		wd.Screenshot()
 		wd.Quit()
@@ -62,7 +53,7 @@ func thereShouldBeRemaining(remaining int) error {
 	return nil
 }
 
-func FeatureContext(s *godog.Suite) {
+func GodogExampleSteps(s *godog.Suite) {
 	s.Step(`^there are (\d+) godogs$`, thereAreGodogs)
 	s.Step(`^I eat (\d+)$`, iEat)
 	s.Step(`^there should be (\d+) remaining$`, thereShouldBeRemaining)
