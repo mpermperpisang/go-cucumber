@@ -28,12 +28,14 @@ func accessURL(url string) error {
 	return nil
 }
 
-func validateWindowTitle() error {
+func validateWindowTitle(name string) error {
 	currentTitle, _ := wd.Title()
-	if expectTitle := ("Welcome mpermperpisang"); currentTitle != expectTitle {
+	if expectTitle := (fmt.Sprintf("Welcome %s", name)); currentTitle != expectTitle {
 		wd.Screenshot()
 		wd.Quit()
 		log.Fatalln(Bold(Red("NAMA TIDAK SESUAI")))
+	} else {
+		fmt.Println(Bold(Magenta("SKENARIO SUKSES")))
 	}
 
 	defer wd.Quit()
@@ -66,7 +68,7 @@ func FeatureContext(s *godog.Suite) {
 	s.Step(`^there should be (\d+) remaining$`, thereShouldBeRemaining)
 	s.Step(`^user open browser$`, seleniumWebDriverConnect)
 	s.Step(`^user access url with name "([^\"]*)"$`, accessURL)
-	s.Step(`^user get window title of his name$`, validateWindowTitle)
+	s.Step(`^user must get window title Welcome "([^\"]*)"$`, validateWindowTitle)
 
 	s.BeforeScenario(func(interface{}) {
 		Godogs = 0 // clean the state before every scenario

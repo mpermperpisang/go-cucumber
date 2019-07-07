@@ -10,13 +10,13 @@ Feature: eat godogs
     Then there should be 7 remaining
 
   @localhost
-  Scenario: Open Bukalapak
+  Scenario: Open localhost
     Given user open browser
     When user access url with name "mpermperpisang"
-    Then user get window title of his name
-    
+    Then user must get window title Welcome "mpermperpisang"
+
   @localhost
-  Scenario: Open Bukalapak
+  Scenario: Open localhost
     Given user open browser
     When user access url with name "ferawati"
-    Then user get window title of his name
+    Then user must get window title Welcome "mpermperpisang"
