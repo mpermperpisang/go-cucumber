@@ -12,11 +12,11 @@ Feature: eat godogs
   @localhost
   Scenario: Open Bukalapak
     Given user open browser
-    When user access url with name "ferawati"
+    When user access url with name "mpermperpisang"
     Then user get window title of his name
-
+    
   @localhost
   Scenario: Open Bukalapak
     Given user open browser
-    When user access url with name "mpermperpisang"
+    When user access url with name "ferawati"
     Then user get window title of his name
