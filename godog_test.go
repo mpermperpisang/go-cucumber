@@ -18,7 +18,7 @@ func setUserName(name string) error {
 }
 
 func accessURL() error {
-	GetURL(fmt.Sprintf(os.Getenv("URL_BIKE")+"%s", userName))
+	GetURL(fmt.Sprintf(os.Getenv("URL_LOCAL")+"%s", userName))
 	fmt.Println(wd.CurrentURL())
 
 	return nil
@@ -33,8 +33,6 @@ func validateWindowTitle(name string) error {
 	} else {
 		fmt.Println(Bold(Magenta("SKENARIO SUKSES")))
 	}
-
-	wd.Quit()
 
 	return nil
 }
@@ -71,6 +69,11 @@ func GodogExampleSteps(s *godog.Suite) {
 	s.Step(`^user must get window title Welcome "([^\"]*)"$`, validateWindowTitle)
 
 	s.BeforeScenario(func(interface{}) {
+		Godogs = 0 // clean the state before every scenario
+	})
+
+	s.AfterScenario(func(interface{}, error) {
+		wd.Quit()
 		Godogs = 0 // clean the state before every scenario
 	})
 }

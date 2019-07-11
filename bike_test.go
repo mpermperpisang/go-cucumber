@@ -49,8 +49,6 @@ func validateSuggestionInputSuccess(msg string) error {
 		log.Println(Bold(Red("TIDAK KETEMU")))
 	}
 
-	wd.Quit()
-
 	return nil
 }
 
@@ -60,6 +58,11 @@ func BukaBikeLandingPageSteps(s *godog.Suite) {
 	s.Step(`^user must not see window "([^\"]*)"$`, validateSuggestionInputSuccess)
 
 	s.BeforeScenario(func(interface{}) {
+		Godogs = 0 // clean the state before every scenario
+	})
+
+	s.AfterScenario(func(interface{}, error) {
+		wd.Quit()
 		Godogs = 0 // clean the state before every scenario
 	})
 }
