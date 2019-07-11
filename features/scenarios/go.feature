@@ -9,12 +9,12 @@ Feature: eat godogs
 
   @test-b
   Scenario: Open localhost valid welcome message
-    Given user open browser
-    When user access url with name "mpermperpisang"
+    Given user with name "mpermperpisang"
+    When user access url with given name
     Then user must get window title Welcome "mpermperpisang"
 
   @test-c
   Scenario: Open localhost invalid welcome message
-    Given user open browser
-    When user access url with name "mpermperpisang"
+    Given user with name "mpermperpisang"
+    When user access url with given name
     Then user must get window title Welcome "ferawati"

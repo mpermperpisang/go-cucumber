@@ -13,11 +13,7 @@ import (
 
 func accessBukaBikeLandingPage() error {
 	seleniumWebDriverConnect()
-
-	if err := wd.Get(baseUrl + os.Getenv("URL_BIKE")); err != nil {
-		log.Fatalln(Bold(Red(err)))
-	}
-
+	GetURL(os.Getenv("URL_BIKE"))
 	fmt.Println(wd.CurrentURL())
 
 	return nil
@@ -32,15 +28,16 @@ func suggestionForm() error {
 
 func clickYesIWantButton() error {
 	FindElementByCss(object_abstractions.BtnSuggestion).Click()
+
 	return nil
 }
 
 func inputSuggestionForm() error {
-	FindElementByXpath(object_abstractions.FieldName).SendKeys("Automation Dweb")
+	FindElementByXpath(object_abstractions.FieldName).SendKeys(os.Getenv("NAME"))
 	FindElementByXpath(object_abstractions.RadioAge).Click()
 	FindElementByXpath(object_abstractions.OptionAge).Click()
-	FindElementByXpath(object_abstractions.FieldOccupation).SendKeys("SDET")
-	FindElementByXpath(object_abstractions.FieldLocation).SendKeys("Tangerang")
+	FindElementByXpath(object_abstractions.FieldOccupation).SendKeys(os.Getenv("OCCUPATION"))
+	FindElementByXpath(object_abstractions.FieldLocation).SendKeys(os.Getenv("LOCATION"))
 	FindElementByCss(object_abstractions.BtnSubmit).Click()
 
 	return nil
@@ -53,6 +50,7 @@ func validateSuggestionInputSuccess(msg string) error {
 	}
 
 	wd.Quit()
+
 	return nil
 }
 

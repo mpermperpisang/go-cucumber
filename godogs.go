@@ -22,7 +22,8 @@ func init() {
 	baseUrl = os.Getenv("URL")
 }
 
-func main() {}
+func main() {
+}
 
 func seleniumWebDriverConnect() error {
 	caps := selenium.Capabilities{"browserName": "chrome"}
