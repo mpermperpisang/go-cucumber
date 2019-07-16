@@ -26,7 +26,7 @@ func main() {
 }
 
 func seleniumWebDriverConnect() error {
-	caps := selenium.Capabilities{"browserName": "chrome"}
+	caps := selenium.Capabilities{"browserName": "firefox"}
 	wd, _ = selenium.NewRemote(caps, "")
 
 	return nil

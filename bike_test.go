@@ -2,13 +2,11 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/go-cucumber/features/object_abstractions"
 
 	"github.com/DATA-DOG/godog"
-	. "github.com/logrusorgru/aurora"
 )
 
 func accessBukaBikeLandingPage() error {
@@ -26,6 +24,28 @@ func suggestionForm() error {
 	return nil
 }
 
+func invalidSuggestionForm() error {
+	clickYesIWantButton()
+	clickSuggestionButton()
+
+	return nil
+}
+
+func clickSuggestionButton() error {
+	FindElementByCss(object_abstractions.BtnSubmit).Click()
+
+	return nil
+}
+
+func validateEmptyErrorMessage() error {
+	FindElementByText("Nama harus diisi").IsDisplayed()
+	FindElementByText("Umur harus diisi").IsDisplayed()
+	FindElementByText("Pekerjaan harus diisi").IsDisplayed()
+	FindElementByText("Lokasi yang diinginkan harus diisi").IsDisplayed()
+
+	return nil
+}
+
 func clickYesIWantButton() error {
 	FindElementByCss(object_abstractions.BtnSuggestion).Click()
 
@@ -38,16 +58,13 @@ func inputSuggestionForm() error {
 	FindElementByXpath(object_abstractions.OptionAge).Click()
 	FindElementByXpath(object_abstractions.FieldOccupation).SendKeys(os.Getenv("OCCUPATION"))
 	FindElementByXpath(object_abstractions.FieldLocation).SendKeys(os.Getenv("LOCATION"))
-	FindElementByCss(object_abstractions.BtnSubmit).Click()
+	clickSuggestionButton()
 
 	return nil
 }
 
 func validateSuggestionInputSuccess(msg string) error {
-	if _, err := FindElementByXpath("//*[contains(text(),'" + os.Getenv("VALIDATION") + "')]").IsDisplayed(); err != nil {
-		wd.Screenshot()
-		log.Println(Bold(Red("TIDAK KETEMU")))
-	}
+	FindElementByText(os.Getenv("VALIDATION")).IsDisplayed()
 
 	return nil
 }
@@ -55,7 +72,9 @@ func validateSuggestionInputSuccess(msg string) error {
 func BukaBikeLandingPageSteps(s *godog.Suite) {
 	s.Step(`^user access bike url$`, accessBukaBikeLandingPage)
 	s.Step(`^user fill suggestion form$`, suggestionForm)
+	s.Step(`^user does not fill suggestion form$`, invalidSuggestionForm)
 	s.Step(`^user must not see window "([^\"]*)"$`, validateSuggestionInputSuccess)
+	s.Step(`^user must see empty error message$`, validateEmptyErrorMessage)
 
 	s.BeforeScenario(func(interface{}) {
 		Godogs = 0 // clean the state before every scenario

@@ -9,6 +9,8 @@ func GetURL(url string) error {
 	return website
 }
 
+// Single element
+// ===================================================================================================================
 func FindElementByCss(locator string) selenium.WebElement {
 	element, _ := wd.FindElement(selenium.ByCSSSelector, locator)
 	return element
@@ -49,6 +51,13 @@ func FindElementByClass(locator string) selenium.WebElement {
 	return element
 }
 
+func FindElementByText(locator string) selenium.WebElement {
+	element, _ := wd.FindElement(selenium.ByXPATH, "//*[contains(text(), 'Nama harus diisi')]")
+	return element
+}
+
+// Multi element
+// ===================================================================================================================
 func FindElementsById(locator string) []selenium.WebElement {
 	element, _ := wd.FindElements(selenium.ByID, locator)
 	return element
@@ -56,6 +65,11 @@ func FindElementsById(locator string) []selenium.WebElement {
 
 func FindElementsByXpath(locator string) []selenium.WebElement {
 	element, _ := wd.FindElements(selenium.ByXPATH, locator)
+	return element
+}
+
+func FindElementsByText(locator string) []selenium.WebElement {
+	element, _ := wd.FindElements(selenium.ByXPATH, "//*[contains(text(), "+locator+")]")
 	return element
 }
 
