@@ -52,7 +52,7 @@ func FindElementByClass(locator string) selenium.WebElement {
 }
 
 func FindElementByText(locator string) selenium.WebElement {
-	element, _ := wd.FindElement(selenium.ByXPATH, "//*[contains(text(), 'Nama harus diisi')]")
+	element, _ := wd.FindElement(selenium.ByXPATH, "//*[contains(text(), '"+locator+"')]")
 	return element
 }
 

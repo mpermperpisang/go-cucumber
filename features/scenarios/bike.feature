@@ -5,7 +5,7 @@ Feature: Bike - Landing Page
   Scenario: Fill bike location suggestion form valid message
     Given user access bike url
     When user fill suggestion form
-    Then user must not see window "Usulkan Lokasi BukaBike Selanjutnya"
+    Then user must not see window "Usulkan Lokasi Sepeda Selanjutnya"
 
   @test-2
   Scenario: Fill bike location suggestion form invalid data

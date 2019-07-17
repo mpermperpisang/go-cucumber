@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go-cucumber/features/object_abstractions"
-
 	"github.com/DATA-DOG/godog"
+	"github.com/go-cucumber/features/object_abstractions"
 )
 
 func accessBukaBikeLandingPage() error {
