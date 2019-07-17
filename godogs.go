@@ -19,7 +19,7 @@ func init() {
 		log.Println(Bold(Red(env)))
 	}
 
-	baseUrl = os.Getenv("URL")
+	baseUrl = os.Getenv("BASE_URL")
 }
 
 func main() {

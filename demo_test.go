@@ -18,13 +18,15 @@ func websiteURL() error {
 
 func accessWebsiteURL() error {
 	seleniumWebDriverConnect()
-	GetURL(os.Getenv("URL_WEBSITE"))
+	GetURL(url)
 
 	return nil
 }
 
 func validateWebsiteURL() error {
-	if expectURL := (url); url != expectURL {
+	currentURL, _ := wd.CurrentURL()
+
+	if expectURL := (url); currentURL != expectURL {
 		wd.Screenshot()
 		fmt.Println(Bold(Red("URL DOESN'T MATCH")))
 	} else {
