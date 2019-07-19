@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/DATA-DOG/godog"
@@ -28,7 +29,7 @@ func validateWebsiteURL() error {
 
 	if expectURL := (url); currentURL != expectURL {
 		wd.Screenshot()
-		fmt.Println(Bold(Red("URL DOESN'T MATCH")))
+		log.Fatalln(Bold(Red("URL DOESN'T MATCH")))
 	} else {
 		fmt.Println(Bold(Magenta("SCENARIO IS SUCCESS")))
 	}
