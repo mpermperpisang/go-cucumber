@@ -67,13 +67,4 @@ func GodogExampleSteps(s *godog.Suite) {
 	s.Step(`^user with name "([^\"]*)"$`, setUserName)
 	s.Step(`^user access url with given name$`, accessURL)
 	s.Step(`^user must get window title Welcome "([^\"]*)"$`, validateWindowTitle)
-
-	s.BeforeScenario(func(interface{}) {
-		Godogs = 0 // clean the state before every scenario
-	})
-
-	s.AfterScenario(func(interface{}, error) {
-		wd.Quit()
-		Godogs = 0 // clean the state before every scenario
-	})
 }

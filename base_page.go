@@ -9,6 +9,11 @@ func GetURL(url string) error {
 	return website
 }
 
+func HTTPRequest(url string) error {
+	request := wd.Get(baseUrl + url)
+	return request
+}
+
 // Single element
 // ===================================================================================================================
 func FindElementByCss(locator string) selenium.WebElement {

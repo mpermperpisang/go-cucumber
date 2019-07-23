@@ -1,4 +1,4 @@
-@all-3
+@all-4
 Feature: GOlang - Try Godog
 
   @test-a
