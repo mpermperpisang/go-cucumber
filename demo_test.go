@@ -41,13 +41,4 @@ func GodogDemoSteps(s *godog.Suite) {
 	s.Step(`^user has url$`, websiteURL)
 	s.Step(`^user access the url$`, accessWebsiteURL)
 	s.Step(`^user must directed to correct url$`, validateWebsiteURL)
-
-	s.BeforeScenario(func(interface{}) {
-		Godogs = 0 // clean the state before every scenario
-	})
-
-	s.AfterScenario(func(interface{}, error) {
-		wd.Quit()
-		Godogs = 0 // clean the state before every scenario
-	})
 }

@@ -74,13 +74,4 @@ func BukaBikeLandingPageSteps(s *godog.Suite) {
 	s.Step(`^user does not fill suggestion form$`, invalidSuggestionForm)
 	s.Step(`^user must not see window "([^\"]*)"$`, validateSuggestionInputSuccess)
 	s.Step(`^user must see empty error message$`, validateEmptyErrorMessage)
-
-	s.BeforeScenario(func(interface{}) {
-		Godogs = 0 // clean the state before every scenario
-	})
-
-	s.AfterScenario(func(interface{}, error) {
-		wd.Quit()
-		Godogs = 0 // clean the state before every scenario
-	})
 }

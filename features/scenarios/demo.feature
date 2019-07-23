@@ -1,4 +1,4 @@
-@all-2
+@all-3
 Feature: GOlang - Learn and Demo Godog
 
   @demo

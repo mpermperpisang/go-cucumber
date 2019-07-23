@@ -1,4 +1,4 @@
-@all-1
+@all-2
 Feature: Bike - Landing Page
 
   @test-1
