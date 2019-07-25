@@ -1,8 +1,8 @@
-package main
+package demo
 
 import "fmt"
 
-func hello(user string) string {
+func Hello(user string) string {
 	if len(user) == 0 {
 		return "Hello Dude!"
 	} else {
