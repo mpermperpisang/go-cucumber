@@ -1,5 +1,5 @@
 @all-3
-Feature: GOlang - Learn and Demo Godog
+Feature: GO Language - Learn and Demo Godog
 
   @demo
   Scenario: Open website and search

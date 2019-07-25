@@ -1,5 +1,5 @@
 @all-1
-Feature: GOlang - Learn and Demo API
+Feature: GO Language - Learn and Demo API
 
   @demo-api
   Scenario: send GET to endpoint-1
