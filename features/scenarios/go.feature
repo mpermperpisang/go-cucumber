@@ -1,5 +1,5 @@
 @all-4
-Feature: GOlang - Try Godog
+Feature: GO Language - Try Godog
 
   @test-a
   Scenario: Eat 5 out of 12
