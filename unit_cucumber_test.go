@@ -7,6 +7,6 @@ import (
 
 func UnitTestCucumber(s *godog.Suite) {
 	s.Step(`^user has a name "([^\"]*)"$`, step_definitions.GivenUserName)
-	s.Step(`^neighbor meet user$`, step_definitions.MeetUserName)
-	s.Step(`^neighbor say "([^\"]*)"$`, step_definitions.SayHelloName)
+	s.Step(`^Testivus meet user$`, step_definitions.MeetUserName)
+	s.Step(`^Testivus say "([^\"]*)"$`, step_definitions.SayHelloName)
 }

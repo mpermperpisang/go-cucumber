@@ -22,7 +22,7 @@ func MeetUserName() error {
 
 func SayHelloName(greet string) error {
 	if meetName != greet {
-		log.Fatalf("hello(\"\") failed, expected %v, got %v", "Hello Dude!", meetName)
+		log.Fatalf("hello(\"Banana\") failed, expected %v, got %v", "Hello Dude!", meetName)
 	}
 
 	return nil
